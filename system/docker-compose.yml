@@ -1,0 +1,23 @@
+version: "3"
+services:
+  mc-redis:
+    container_name: mc-redis
+    image: redis
+    restart: always
+  mc-app:
+    container_name: mc-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3333:3333
+    depends_on:
+      - mc-redis
+    volumes:
+      - .:/app
+    environment:
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_DB: ${REDIS_DB}
+  mc-web:
+    container_name: mc-web

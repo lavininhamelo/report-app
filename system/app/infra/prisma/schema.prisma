@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource sqliteDb {
+  provider = "sqlite"
+  url      = "file:./sqlite.db"
+}
+
+model AvatarImage {
+  id            String   @id @default(uuid())
+  path          String
+  userReference String
+  reportId      String
+  report        Report[]
+  createdAt     DateTime @default(now())
+}
+
+model Report {
+  id             String      @id @default(uuid())
+  imageReference String
+  reportDate     DateTime?
+  tags           String?
+  probability    Float       @default(0)
+  status         String      @default("pending")
+  image          AvatarImage @relation(fields: [imageReference], references: [id])
+  createdAt      DateTime    @default(now())
+
+  @@index([imageReference], map: "report_imageReference_fkey")
+}
