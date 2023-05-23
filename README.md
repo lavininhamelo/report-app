@@ -8,7 +8,7 @@ On the API folder (system)
 `docker-compose up`
 
 2. Run the migrations 
-(it is really important to run the migrations before test the applcation on web server)
+(it is really important to run the migrations before testing the application on the web server)
 
 `docker-compose run mc-app yarn migrate-initial`
 
