@@ -19,5 +19,3 @@ services:
     environment:
       REDIS_PORT: ${REDIS_PORT}
       REDIS_DB: ${REDIS_DB}
-  mc-web:
-    container_name: mc-web

@@ -1,0 +1,10 @@
+version: "3"
+services:
+  mc-web:
+    container_name: mc-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 4173:4173
